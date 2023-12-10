@@ -31,3 +31,14 @@ SELECT s.year,CONCAT(UPPER(s.name),'!!!') FROM sets s WHERE s.name LIKE '%Batman
 -- For every quantity value greater than 1 in the inventory_parts table, double the value of the quantity
 -- Limit the output to 20 rows and order by quantity
 SELECT quantity,quantity * 2 AS double_quantity FROM inventory_parts WHERE quantity >1 ORDER BY quantity DESC LIMIT 20;
+
+SELECT * FROM sets;
+
+-- Show the sum of all the parts for all of the sets that came out since the year 2000
+SELECT year,SUM(num_parts) FROM sets WHERE year >1999 GROUP BY year;
+
+-- Show the average numbers of parts for sets that came out since the year 2000
+SELECT year,AVG(num_parts) FROM sets WHERE year >1999 GROUP BY year;
+
+-- Using Group By, show the average number of parts for each theme_id in sets
+SELECT theme_id,AVG(num_parts) FROM sets GROUP BY theme_id;
